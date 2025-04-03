@@ -83,8 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
-
+'locale' => 'fr',
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -95,8 +94,7 @@ return [
     | the language folders that are provided through your application.
     |
     */
-
-    'fallback_locale' => 'en',
+'fallback_locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,8 +106,7 @@ return [
     | localized telephone numbers, street address information and more.
     |
     */
-
-    'faker_locale' => 'en_US',
+'faker_locale' => 'fr_FR',
 
     /*
     |--------------------------------------------------------------------------

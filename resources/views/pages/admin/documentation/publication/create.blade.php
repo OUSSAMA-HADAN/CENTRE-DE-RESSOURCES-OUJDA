@@ -19,7 +19,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Informations de la publication</h6>
         </div>
         <div class="card-body">
-            <form action="{{route('documentation.publications.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.documentation.publications.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">
