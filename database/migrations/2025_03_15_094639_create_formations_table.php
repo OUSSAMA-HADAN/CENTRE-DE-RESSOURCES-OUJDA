@@ -29,10 +29,10 @@ return new class extends Migration
             $table->string('duration')->nullable();
             
             // Location and platform
-            $table->string('platform')->nullable();
+            $table->string('platform');
             
             // formateur information
-            $table->string('formateur')->nullable();
+            $table->string('formateur');
             
             // Publication status
             $table->boolean('is_published')->default(false);

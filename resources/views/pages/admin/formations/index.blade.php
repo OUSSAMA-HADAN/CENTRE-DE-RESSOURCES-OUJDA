@@ -181,7 +181,9 @@
                             </td>
                             <td>
                                 <div class="btn-group" role="group">
-                                   
+                                <a href="{{ route('admin.formations.edit', $formation) }}" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
                                     <form action="{{ route('admin.formations.destroy', $formation) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')

@@ -114,7 +114,8 @@ class AdminFormationController extends Controller
             $formation->slug = Str::slug($validated['title']);
             $formation->description = $validated['description'];
             $formation->content = $validated['description']; // Using description as content since content isn't in the form
-
+            $formation->formateur = $validated['formateur'];
+            $formation->platform = $validated['platform'];
             // Dates and times
             $formation->start_date = $validated['start_date'] ?? null;
             $formation->end_date = $validated['end_date'] ?? null;
@@ -133,6 +134,16 @@ class AdminFormationController extends Controller
             } else {
                 $formation->duration = 'Non définie';
             }
+            // Formation::create('formation', [
+            //     'title' => $validated['title'],
+            //     'slug' => Str::slug($validated['title']),
+            //     'description' => $validated['description'],
+            //     'content' => $validated['description'], // Using description as content since content isn't in the form
+            //     'start_date' => $validated['start_date'] ?? null,
+            //     'end_date' => $validated['end_date'] ?? null,
+            //     'formateur' => $validated['formateur'],
+            //     'platform' => $validated['platform'],
+            // ]);
 
             // Location is platform in this case
             // $formation->location = $validated['platform'];
@@ -167,10 +178,10 @@ class AdminFormationController extends Controller
      * @param  \App\Models\Formation  $formation
      * @return \Illuminate\View\View
      */
-    // public function edit(Formation $formation)
-    // {
-    //     return view('pages.admin.formations.edit', compact('formation'));
-    // }
+    public function edit(Formation $formation)
+    {
+        return view('pages.admin.formations.edit', compact('formation'));
+    }
 
     /**
      * Update the specified formation in storage.
@@ -179,59 +190,59 @@ class AdminFormationController extends Controller
      * @param  \App\Models\Formation  $formation
      * @return \Illuminate\Http\RedirectResponse
      */
-    // public function update(Request $request, Formation $formation)
-    // {
-    //     $validated = $request->validate([
-    //         'title' => 'required|string|max:255',
-    //         'slug' => [
-    //             'nullable',
-    //             'string',
-    //             'max:255',
-    //             Rule::unique('formations')->ignore($formation->id)
-    //         ],
-    //         'description' => 'required|string|max:500',
-    //         'content' => 'required|string',
-    //         'category' => 'required|string|max:255',
-    //         'duration' => 'required|string|max:50',
-    //         'start_date' => 'nullable|date',
-    //         'end_date' => 'nullable|date|after_or_equal:start_date',
-    //         'location' => 'nullable|string|max:255',
-    //         'is_published' => 'boolean',
-    //         'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    //     ]);
+    public function update(Request $request, Formation $formation)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::unique('formations')->ignore($formation->id)
+            ],
+            'description' => 'required|string|max:500',
+            'content' => 'required|string',
+            'category' => 'required|string|max:255',
+            'duration' => 'required|string|max:50',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
+            'location' => 'nullable|string|max:255',
+            'is_published' => 'boolean',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    //     try {
-    //         // Set boolean value for is_published
-    //         $validated['is_published'] = $request->has('is_published');
+        try {
+            // Set boolean value for is_published
+            $validated['is_published'] = $request->has('is_published');
 
-    //         // Generate slug if not provided
-    //         if (empty($validated['slug'])) {
-    //             $validated['slug'] = Str::slug($validated['title']);
-    //         }
+            // Generate slug if not provided
+            if (empty($validated['slug'])) {
+                $validated['slug'] = Str::slug($validated['title']);
+            }
 
-    //         // Handle thumbnail upload
-    //         if ($request->hasFile('thumbnail')) {
-    //             // Delete old thumbnail
-    //             if ($formation->thumbnail && Storage::disk('public')->exists($formation->thumbnail)) {
-    //                 Storage::disk('public')->delete($formation->thumbnail);
-    //             }
+            // Handle thumbnail upload
+            if ($request->hasFile('thumbnail')) {
+                // Delete old thumbnail
+                if ($formation->thumbnail && Storage::disk('public')->exists($formation->thumbnail)) {
+                    Storage::disk('public')->delete($formation->thumbnail);
+                }
 
-    //             $validated['thumbnail'] = $request->file('thumbnail')->store('formations/thumbnails', 'public');
-    //         }
+                $validated['thumbnail'] = $request->file('thumbnail')->store('formations/thumbnails', 'public');
+            }
 
-    //         $formation->update($validated);
+            $formation->update($validated);
 
-    //         return redirect()->route('admin.formations.index')
-    //             ->with('success', 'Formation mise à jour avec succès.');
+            return redirect()->route('admin.formations.index')
+                ->with('success', 'Formation mise à jour avec succès.');
 
-    //     } catch (\Exception $e) {
-    //         Log::error('Error updating formation: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            Log::error('Error updating formation: ' . $e->getMessage());
 
-    //         return back()
-    //             ->with('error', 'Une erreur est survenue lors de la mise à jour de la formation.')
-    //             ->withInput();
-    //     }
-    // }
+            return back()
+                ->with('error', 'Une erreur est survenue lors de la mise à jour de la formation.')
+                ->withInput();
+        }
+    }
 
     /**
      * Remove the specified formation from storage.

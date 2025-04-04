@@ -101,76 +101,162 @@
     </div>
 </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Formations programmées -->
-<section id="formations" class="py-5">
+<section id="formations" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Formations en ligne programmées</h2>
-            <div class="d-flex justify-content-center mb-3">
-                <div style="width: 80px; height: 4px; background-color: #10b981;"></div>
+            <h2 class="display-6 fw-bold mb-3 text-primary">Ateliers en ligne programmés</h2>
+            <div class="d-flex justify-content-center mb-4">
+                <div style="width: 100px; height: 4px; background-color: #10b981;"></div>
             </div>
-            <p class="text-muted">Découvrez nos Ateliers en ligne conçues pour développer vos compétences professionnelles.</p>
+            <p class="text-muted lead">Développez vos compétences professionnelles grâce à nos formations spécialisées.</p>
         </div>
-        
-        @if(isset($formations) && count($formations) > 0)
-            <div class="row g-4">
-                @foreach($formations as $formation)
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-header bg-info text-white py-3">
-                                <h5 class="card-title mb-0">{{ $formation->title }}</h5>
-                            </div>
-                            <div class="card-body p-4">
-                                <div class="mb-3">
-                                    @if($formation->thumbnail)
-                                        <img src="{{ $formation->thumbnail_url }}" alt="{{ $formation->title }}" class="img-fluid rounded mb-3">
-                                    @endif
-                                    <p class="text-muted">{{ Str::limit($formation->description, 150) }}</p>
+Copy    @if(isset($formations) && count($formations) > 0)
+        <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+            @foreach($formations as $formation)
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-hover transition-all position-relative overflow-hidden">
+                        <div class="card-header bg-primary text-white py-3 d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0 text-truncate">{{ $formation->title }}</h5>
+                            <span class="badge bg-light text-primary">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="card-body p-4">
+                            @if($formation->thumbnail)
+                                <div class="mb-3 formation-image-container">
+                                    <img 
+                                        src="{{ $formation->thumbnail_url }}" 
+                                        alt="{{ $formation->title }}" 
+                                        class="img-fluid rounded formation-image"
+                                    >
+                                </div>
+                            @endif
+                            
+                            <p class="text-muted mb-3">{{ Str::limit($formation->description, 100) }}</p>
+                            
+                            <div class="formation-details">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-calendar-alt text-primary me-2"></i>
+                                    <small class="text-muted">
+                                        Début : {{ $formation->start_date ? $formation->start_date->format('d/m/Y') : 'Date non définie' }}
+                                    </small>
                                 </div>
                                 
                                 <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-calendar-alt text-info me-2"></i>
-                                    <span>Début le : {{ $formation->start_date ? $formation->start_date->format('d/m/Y') : 'Date non définie' }}</span>
+                                    <i class="fas fa-clock text-primary me-2"></i>
+                                    <small class="text-muted">
+                                        Durée : {{ $formation->duration ?? 'Non spécifiée' }}
+                                    </small>
                                 </div>
                                 
                                 <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-clock text-info me-2"></i>
-                                    <span>Durée : {{ $formation->duration ?? 'Non spécifiée' }}</span>
-                                </div>
-                                
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-user-tie text-info me-2"></i>
-                                    <span>Formateur : {{ $formation->formateur }}</span>
+                                    <i class="fas fa-user-tie text-primary me-2"></i>
+                                    <small class="text-muted">
+                                        Formateur : {{ $formation->formateur_name ?? 'Non spécifié' }}
+                                    </small>
                                 </div>
                                 
                                 <div class="d-flex align-items-center">
-                                    <i class="fas fa-video text-info me-2"></i>
-                                    <span>Plateforme : {{ $formation->platform }}</span>
+                                    <i class="fas fa-desktop text-primary me-2"></i>
+                                    <small class="text-muted">
+                                        Plateforme : {{ $formation->platform_name ?? 'Non spécifiée' }}
+                                    </small>
                                 </div>
                             </div>
-                            
-                            <div class="card-footer">
-                                <a href="{{ route('formation.show', $formation->slug) }}" class="btn btn-outline-primary w-100">
-                                    Voir les détails
-                                </a>
-                            </div>
+                        </div>
+                        
+                        <div class="card-footer bg-transparent border-0 p-4">
+                            <a 
+                                href="{{ route('formation.show', $formation->slug) }}" 
+                                class="btn btn-outline-primary w-100 stretched-link"
+                            >
+                                <i class="fas fa-info-circle me-2"></i>Détails de la formation
+                            </a>
                         </div>
                     </div>
-                @endforeach
-            </div>
-        @else
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-5 text-center">
-                    <div class="mb-4">
-                        <i class="fas fa-calendar-alt fa-4x text-muted opacity-50"></i>
-                    </div>
-                    <h3 class="mb-3">Aucune formation disponible</h3>
-                    <p class="text-muted mb-4">Nous travaillons actuellement sur de nouvelles formations. Revenez bientôt !</p>
                 </div>
+            @endforeach
+        </div>
+    @else
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-5 text-center">
+                <div class="mb-4">
+                    <i class="fas fa-graduation-cap fa-5x text-muted opacity-50"></i>
+                </div>
+                <h3 class="mb-3 text-muted">Aucune formation disponible</h3>
+                <p class="text-muted mb-4">
+                    Nos équipes travaillent actuellement sur de nouveaux ateliers. 
+                    Restez à l'écoute pour des opportunités de formation à venir !
+                </p>
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-bell me-2"></i>Restez informé
+                </a>
             </div>
-        @endif
-    </div>
+        </div>
+    @endif
+</div>
 </section>
+@push('styles')
+<style>
+    /* Formation Card Styles */
+    .formation-image-container {
+        height: 200px;
+        overflow: hidden;
+        border-radius: 0.5rem;
+    }
+    
+    .formation-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .card.shadow-hover {
+        transition: all 0.3s ease;
+    }
+    
+    .card.shadow-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+    }
+    
+    .card.shadow-hover:hover .formation-image {
+        transform: scale(1.1);
+    }
+    
+    .transition-all {
+        transition: all 0.3s ease;
+    }
+</style>
+@endpush
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Pourquoi nos formations -->
 <section class="py-5 bg-light">
