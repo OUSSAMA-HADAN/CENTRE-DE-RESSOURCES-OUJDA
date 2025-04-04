@@ -140,7 +140,7 @@
                             </ul>
                         </div>
                         <div class="card-footer bg-light">
-                            <a href="#formations" class="btn btn-outline-primary w-100">
+                            <a href="{{route('recherche.index')}}" class="btn btn-outline-primary w-100">
                                 {{ __('units.research.learn_more') }}
                             </a>
                         </div>
@@ -165,7 +165,7 @@
                             </ul>
                         </div>
                         <div class="card-footer bg-light">
-                            <a href="#consultations" class="btn btn-outline-success w-100">
+                            <a href="{{route('documentation.index')}}" class="btn btn-outline-success w-100">
                                 {{ __('units.documentation.learn_more') }}
                             </a>
                         </div>
@@ -190,7 +190,7 @@
                             </ul>
                         </div>
                         <div class="card-footer bg-light">
-                            <a href="#ateliers" class="btn btn-outline-info w-100">
+                            <a href="{{route('formation.index')}}" class="btn btn-outline-info w-100">
                                 {{ __('units.online_training.learn_more') }}
                             </a>
                         </div>
