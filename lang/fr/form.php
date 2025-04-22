@@ -1,4 +1,3 @@
-// lang/fr/form.php
 <?php
 
 return [
@@ -46,5 +45,12 @@ return [
         'email_unique' => 'Cette adresse e-mail est déjà utilisée par une autre candidature.',
         'id_card_unique' => 'Ce numéro de carte d identité est déjà utilisé par une autre candidature.',
         'birth_date_past' => 'La date de naissance doit être dans le passé.',
+    ],
+    'loader' => [
+        'message' => 'Chargement en cours...',
+    ],
+    'success' => [
+        'title' => 'Succès',
+        'message' => 'Votre candidature a été soumise avec succès.',
     ],
 ];

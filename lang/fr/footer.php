@@ -4,7 +4,7 @@ return [
     'center_name' => 'Centre de Ressources du Préscolaire',
     'description' => 'Dédié à l\'amélioration de l\'éducation préscolaire à travers la formation, la recherche et la documentation.',
     
-    'address' => 'École Sidi Ziane Al Mokhtatifa, Oujda, Maroc',
+    'address' => 'École Sidi Ziane Al Mokhtalita, Oujda, Maroc',
     'email' => 'crp@markaz-oujda.com',
     
     'quick_links' => [

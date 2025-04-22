@@ -124,3 +124,10 @@ Route::prefix('admin')->middleware(['auth:admin'])->name('admin.')->group(functi
     Route::put('/formations/{formation}', [AdminFormationController::class, 'update'])->name('formations.update');
     Route::delete('/formations/{formation}', [AdminFormationController::class, 'destroy'])->name('formations.destroy');
 });
+
+Route::get('/editor', function () {
+    return view('test');
+})->name('editor');
+
+Route::post('/save-content', [App\Http\Controllers\EditorController::class, 'saveContent'])->name('save.content');
+

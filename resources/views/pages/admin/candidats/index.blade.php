@@ -122,10 +122,10 @@
                 </table>
             </div>
             
-            <!-- Pagination -->
+            <!--Pagination -->
             @if(isset($candidats) && $candidats->hasPages())
             <div class="d-flex justify-content-center mt-4">
-                {{ $candidats->withQueryString()->links() }}
+                {{ $candidats->withQueryString()->links('pagination::bootstrap-5') }}
             </div>
             @endif
         </div>

@@ -18,7 +18,7 @@ return [
         ],
         'pedagogical_resources' => [
             'title' => 'الموارد التربوية',
-            'description' => 'أدوات عملية للتعليم قبل المدرسي.',
+            'description' => 'أدوات عملية للتعليم  الأولي.',
         ],
         'image_alt' => 'Centre de Ressources du Préscolaire',
     ],
@@ -45,7 +45,8 @@ return [
         'description' => 'تعرف علينا بسهولة في مركز الموارد للتعليم الأولي - وجدة.',
         'address' => [
             'title' => 'العنوان',
-            'content' => 'مدرسة سيدي زيان المختطفة، وجدة، المغرب',
+            'content' => ' مدرسة سيدي  زيا ن المختلطة، وجدة، المغرب',
+
         ],
 
         'email' => [

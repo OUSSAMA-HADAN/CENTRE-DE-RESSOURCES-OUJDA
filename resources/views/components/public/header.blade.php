@@ -9,6 +9,20 @@
             <span class="ms-2 d-none d-sm-inline text-light site-title">{{ __('header.title') }}</span>
         </a>
 
+        <!-- Language switcher for mobile (visible outside sidebar) -->
+        <div class="d-md-none me-2">
+            <div class="dropdown">
+                <button class="btn btn-sm text-white dropdown-toggle language-btn" type="button" id="mobileLangDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-globe me-1"></i>
+                    <span>{{ app()->getLocale() == 'fr' ? 'FR' : 'AR' }}</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end animated fadeIn" aria-labelledby="mobileLangDropdown">
+                    <li><a class="dropdown-item {{ app()->getLocale() == 'fr' ? 'active' : '' }}" href="{{ route('language.switch', 'fr') }}">Français</a></li>
+                    <li><a class="dropdown-item {{ app()->getLocale() == 'ar' ? 'active' : '' }}" href="{{ route('language.switch', 'ar') }}">العربية</a></li>
+                </ul>
+            </div>
+        </div>
+
         <!-- Custom hamburger button -->
         <button class="navbar-toggler border-0 p-0" type="button" id="mobile-menu-toggle"
             aria-controls="navbarNav" aria-expanded="false"
@@ -139,13 +153,13 @@
                     <i class="fas fa-chevron-down ms-auto dropdown-icon"></i>
                 </div>
                 <ul class="mobile-dropdown-menu">
-                    <li><a class="mobile-dropdown-item" href="#formations">
+                    <li><a class="mobile-dropdown-item" href="{{route('recherche.index')}}">
                             <i class="fas fa-microscope me-2"></i> {{ __('header.units_dropdown.research') }}
                         </a></li>
-                    <li><a class="mobile-dropdown-item" href="#consultations">
+                    <li><a class="mobile-dropdown-item" href="{{route('documentation.index')}}">
                             <i class="fas fa-book me-2"></i>{{ __('header.units_dropdown.documentation') }}
                         </a></li>
-                    <li><a class="mobile-dropdown-item" href="#ateliers">
+                    <li><a class="mobile-dropdown-item"  href="{{route('formation.index')}}">
                             <i class="fas fa-users me-2"></i>Formation Enligne
                         </a></li>
                 </ul>
@@ -161,22 +175,6 @@
                     <i class="fas fa-map-marker-alt me-2"></i>
                     <span>{{ __('header.location') }}</span>
                 </a>
-            </li>
-            <!-- Language switcher for mobile -->
-            <li class="mobile-nav-item mobile-dropdown">
-                <div class="mobile-nav-link mobile-dropdown-toggle">
-                    <i class="fas fa-globe me-2"></i>
-                    <span>{{ app()->getLocale() == 'fr' ? 'Français' : 'العربية' }}</span>
-                    <i class="fas fa-chevron-down ms-auto dropdown-icon"></i>
-                </div>
-                <ul class="mobile-dropdown-menu">
-                    <li><a class="mobile-dropdown-item" href="{{ route('language.switch', 'fr') }}">
-                            Français
-                        </a></li>
-                    <li><a class="mobile-dropdown-item" href="{{ route('language.switch', 'ar') }}">
-                            العربية
-                        </a></li>
-                </ul>
             </li>
             <li class="mobile-nav-item mt-4">
                 <a class="btn px-4 py-2 signup-btn w-100" href="{{ route('inscription.form') }}"
@@ -199,6 +197,21 @@
         transition: all 0.3s ease;
         padding: 15px 0;
         z-index: 1030;
+    }
+
+    /* Mobile language button */
+    .language-btn {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        font-size: 0.85rem;
+        padding: 0.25rem 0.5rem;
+        transition: all 0.2s ease;
+    }
+
+    .language-btn:hover, .language-btn:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
     }
 
     /* Logo effects */
@@ -656,4 +669,3 @@
         window.addEventListener('resize', setActiveLinks);
     });
 </script>
-

@@ -112,7 +112,7 @@
                     </div>
                 @empty
                     <div class="col-12 text-center">
-                        <p>{{ __('documentation.no_publications') }}</p>
+                        <p>aucune publication pour le moment</p>
                     </div>
                 @endforelse
             </div>

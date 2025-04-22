@@ -432,12 +432,12 @@
                 </a>
             </li>
             <li class="sidebar-section-header">Système</li>
-            <li class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
-                <a href="">
-                    <i class="fas fa-cog nav-icon"></i>
-                    <span class="sidebar-text">Paramètres</span>
-                </a>
-            </li>
+            <!--<li class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">-->
+            <!--    <a href="">-->
+            <!--        <i class="fas fa-cog nav-icon"></i>-->
+            <!--        <span class="sidebar-text">Paramètres</span>-->
+            <!--    </a>-->
+            <!--</li>-->
             <li>
                 <a href="{{ route('home') }}">
                     <i class="fas fa-home nav-icon"></i>

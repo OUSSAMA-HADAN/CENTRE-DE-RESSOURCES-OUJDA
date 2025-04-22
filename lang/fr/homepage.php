@@ -47,7 +47,7 @@ return [
 
         'address' => [
             'title' => 'Adresse',
-            'content' => 'École Sidi Ziane Al Mokhtatifa, Oujda, Maroc',
+            'content' => 'École Sidi Ziane Al Mokhtalita, Oujda, Maroc',
         ],
 
         'email' => [

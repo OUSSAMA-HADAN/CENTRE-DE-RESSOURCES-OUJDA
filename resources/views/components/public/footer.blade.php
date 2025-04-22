@@ -69,7 +69,7 @@
         <p class="text-white-50 small mb-0">
             &copy; {{ __('footer.copyright') }}
             <br>
-            <span class="text-white-50 small">
+           <!-- <span class="text-white-50 small">
                 Développé par OUSSAMA HEDDANE
             </span>
             <span class=" mt-2">
@@ -79,7 +79,7 @@
                 <a href="https://www.linkedin.com/in/oussama-heddane-773ab9307/" target="_blank" class="text-white-50 mx-2" title="LinkedIn">
                     <i class="fab fa-linkedin fa-lg"></i>
                 </a>
-            </span>
+            </span>-->
         </p>
     </div>
 </div>

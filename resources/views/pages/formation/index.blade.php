@@ -123,7 +123,7 @@
             </div>
             <p class="text-muted lead">Développez vos compétences professionnelles grâce à nos formations spécialisées.</p>
         </div>
-Copy    @if(isset($formations) && count($formations) > 0)
+        @if(isset($formations) && count($formations) > 0)
         <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
             @foreach($formations as $formation)
                 <div class="col">
@@ -202,9 +202,9 @@ Copy    @if(isset($formations) && count($formations) > 0)
                     Nos équipes travaillent actuellement sur de nouveaux ateliers. 
                     Restez à l'écoute pour des opportunités de formation à venir !
                 </p>
-                <a href="#" class="btn btn-primary">
-                    <i class="fas fa-bell me-2"></i>Restez informé
-                </a>
+                <!--<a href="#" class="btn btn-primary">-->
+                <!--    <i class="fas fa-bell me-2"></i>Restez informé-->
+                <!--</a>-->
             </div>
         </div>
     @endif
@@ -311,20 +311,20 @@ Copy    @if(isset($formations) && count($formations) > 0)
 
 
 <!-- CTA Section -->
-<section class="py-5 bg-info text-white">
-    <div class="container text-center py-3">
-        <h2 class="fw-bold mb-4">{{ __('formation.cta.title') }}</h2>
-        <p class="lead mb-4">{{ __('formation.cta.description') }}</p>
-        <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-            <a href="{{ route('inscription.form') }}" class="btn btn-light btn-lg px-4">
-                <i class="fas fa-user-plus me-2"></i>{{ __('formation.cta.register_button') }}
-            </a>
-            <a href="mailto:crp@markaz-oujda.com" class="btn btn-outline-light btn-lg px-4">
-                <i class="fas fa-envelope me-2"></i>{{ __('formation.cta.contact_button') }}
-            </a>
-        </div>
-    </div>
-</section>
+<!--<section class="py-5 bg-info text-white">-->
+<!--    <div class="container text-center py-3">-->
+<!--        <h2 class="fw-bold mb-4">{{ __('formation.cta.title') }}</h2>-->
+<!--        <p class="lead mb-4">{{ __('formation.cta.description') }}</p>-->
+<!--        <div class="d-flex flex-column flex-md-row justify-content-center gap-3">-->
+<!--            <a href="{{ route('inscription.form') }}" class="btn btn-light btn-lg px-4">-->
+<!--                <i class="fas fa-user-plus me-2"></i>{{ __('formation.cta.register_button') }}-->
+<!--            </a>-->
+<!--            <a href="mailto:crp@markaz-oujda.com" class="btn btn-outline-light btn-lg px-4">-->
+<!--                <i class="fas fa-envelope me-2"></i>{{ __('formation.cta.contact_button') }}-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 @endsection
 
 @push('styles')
